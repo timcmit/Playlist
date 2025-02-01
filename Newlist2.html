@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropbox Music Player</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .category { margin-bottom: 20px; }
+        audio { width: 100%; margin-top: 10px; }
+        button { margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <h2>Select Tracks to Create a Playlist</h2>
+
+    <!-- Classical Music -->
+    <div class="category">
+        <h3>🎻 Classical</h3>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/3fhttqf97g00ago8dnfhu/Bruch-song-1.m4a?rlkey=51us3x26g0793paiocng0onvk&st=9abe78ji&raw=1"> Bruch song 1</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/k4w2q6xrnkc0otiv02l1s/Bruch-song-6.m4a?rlkey=92ezo7ufgotixc98xv8ygcvf0&st=6po0fod8&raw=1"> Bruch song 6</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/sa1giqmblgfjjq4fvi032/Gabriels-oboe.m4a?rlkey=2obqy1ztxcyad3sicjzby3bxy&st=av967bwc&raw=1"> Gabriel's oboe</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/0d7fs8z2wbcvh7mm4s3ws/Mozart-clarinet-concerto.m4a?rlkey=34c0gd7agxcb7bhm3633n83my&st=y6f433ej&raw=1"> Mozart clarinet concerto</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/j48i9s9g02ltu4n4mhj1f/Webber-variation-9.m4a?rlkey=i2f2l467ni3ru4s7tg8gvyxrx&st=v5osaucw&raw=1"> Lloyd Webber Variation 9</label><br>
+    </div>
+
+    <!-- Easy Listening -->
+    <div class="category">
+        <h3>🎼 Easy Listening</h3>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/0ymh9gx9p50j9v1401ydk/Autumn-leaves.m4a?rlkey=wwjhk1k6kekutxrcq3qz37klh&st=qz2xvfbr&raw=1"> Autumn leaves</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/hxid5crqay0qx44riy4v4/Bear-necessities.m4a?rlkey=eyd6a46eaelrphpjr5obe4bdv&st=jvl70b9x&raw=1"> Bear necessities</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/veyc90w31m6j2bp3mbzt8/Come-away-with-me.m4a?rlkey=iycc2kfcraotbf9lqzc15ijuf&st=w8bquszh&raw=1"> Come away with me</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/v82txfx3gh0n1lcyev5ga/Father-and-son.m4a?rlkey=xr0gb584nagfaiv4qsqzq38mb&st=quxgzsu0&raw=1"> Father and son</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/16ib86sbflypw3ph0h7he/Georgia.m4a?rlkey=w9dmxntzofbj8vewtdj8z0zen&st=kiq25ca4&raw=1"> Georgia</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/s2qzg6sl7gbda7xzfzqnu/Ma-mere.m4a?rlkey=6j7a79qsu7v5awh036rkmsi1z&st=f58w07c3&raw=1"> Ma mere</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/nrdkeit3m5ba633352xvn/Misty.m4a?rlkey=gmts3emxsif7t7a7oinob5lqt&st=h1b92gxp&raw=1"> Misty</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/blt6xv6kbwvf47zmgur2v/My-baby-dont-care.m4a?rlkey=x5qa7znz8gt78z39y5w5p6dfh&st=d1pkfx9d&raw=1"> My baby don't care</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/kxevps4kvccho7cfk278n/Never-love-again.m4a?rlkey=kp4v0jo9ug01agfd8yabbkayq&st=vs3sjvfk&raw=1"> Never love again</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/azkszsg0ma2jgpnofa7dn/She-used-to-be-mine.m4a?rlkey=1xf4g5kdxov26gwi70x0j3qsr&st=tazu1x01&raw=1"> She used to be mine</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/rez0wa67quomn7pdf59rz/Stranger-on-the-shore.m4a?rlkey=bns5bx36fbfi178z19bduf6wd&st=yet4hhwk&raw=1"> Stranger on the shore</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/tl9izz2q3bghbzzhuazrc/Summertime.m4a?rlkey=ye7w2kofoknlz8noiilvy7a04&st=bb3okqan&raw=1"> Summertime</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/k32a92klihajuf0ze3q8r/Thousand-years.m4a?rlkey=iourg37tg9meqs8b66u3639qn&st=emfan3h5&raw=1"> Thousand years</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/3ujn2b5jlp643ol9aouml/Vienna.m4a?rlkey=wh772h69pt2p6obm548fm533y&st=wrzayxuk&raw=1"> Vienna</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/kg9njz0edgszxcb1q4clr/Vincent.m4a?rlkey=69m3x1pvmsn38wvmvwomfuv6j&st=eryb39k0&raw=1"> Vincent</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/5e4dlv9fmnzrc12obwvax/Wonderful-world.m4a?rlkey=uvksxepos1vu6kuici0bq3g8q&st=kv7yg4mx&raw=1"> Vienna</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/0hbzdng0edhqopgvjd5xf/You-are-the-reason.m4a?rlkey=ie3t121b7q6kzb4weachnnuh1&st=qp6vr2ex&raw=1"> You are the reason</label><br>
+    </div>
+
+    <!-- Rock Music -->
+    <div class="category">
+        <h3>🎸 Rock</h3>
+    </div>
+
+    <button type="button" onclick="generatePlaylist()">Generate Playlist</button>
+
+    <h3>🎶 Now Playing:</h3>
+    <audio id="audioPlayer" controls>
+        Your browser does not support the audio element.
+    </audio>
+    <br>
+    <button onclick="nextTrack()">Next</button>
+
+    <script>
+        let playlist = [];
+        let currentIndex = 0;
+        let audioPlayer = document.getElementById("audioPlayer");
+
+        function generatePlaylist() {
+            playlist = [];
+            currentIndex = 0;
+            document.querySelectorAll('input[name="file"]:checked').forEach((checkbox) => {
+                playlist.push(checkbox.value);
+            });
+
+            if (playlist.length > 0) {
+                playTrack(currentIndex);
+            } else {
+                alert("Please select at least one track.");
+            }
+        }
+
+        function playTrack(index) {
+            if (playlist.length === 0) return;
+            audioPlayer.src = playlist[index];
+            audioPlayer.play().catch(error => console.error("Autoplay blocked:", error));
+        }
+
+        function nextTrack() {
+            if (playlist.length === 0) return;
+            currentIndex = (currentIndex + 1) % playlist.length;
+            playTrack(currentIndex);
+        }
+
+        // Automatically play the next track when the current one ends
+        audioPlayer.addEventListener("ended", nextTrack);
+    </script>
+
+</body>
+</html>
