@@ -247,6 +247,11 @@
         currentIndex = 0;
         document.getElementById("playlistDisplay").innerHTML = "";  // Clear the playlist display
         audioPlayer.src = "";  // Stop playing the current track
+
+        // Clear the checkboxes (uncheck all)
+        document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) {
+            checkbox.checked = false;
+        });
     }
 
     // Automatically play the next track when the current one ends
