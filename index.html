@@ -17,10 +17,10 @@
         }
 
         .tracklist label {
-            flex: 1 1 calc(33.333% - 10px); /* Adjust for up to 3 columns */
-            min-width: 100px; /* Prevents tiny checkboxes */
-            white-space: nowrap; /* Ensures text stays in one line */
-            margin: 0; /* Removes margin that could cause gaps */
+            flex: 1 1 calc(33.333% - 10px); /* Ensures consistent width */
+            min-width: 100px; /* Keeps all checkboxes the same */
+            max-width: 33.333%; /* Ensures last checkbox doesn't stretch */
+            text-align: left; /* Aligns text properly */
         }
 
         @media (max-width: 768px) {
