@@ -93,7 +93,7 @@
     <button onclick="toggleShuffle()">Shuffle: <span id="shuffleStatus">OFF</span></button> <!-- NEW -->
 
     <h3>🎶 Now Playing:</h3>
-    <audio id="audioPlayer" controls oncontextmenu="return false;">
+    <audio id="audioPlayer" controls>
         Your browser does not support the audio element.
     </audio>
     <br>
@@ -177,8 +177,19 @@
     </script>
     <!-- JavaScript to disable right-click on the audio player -->
     <script>
-        document.getElementById('audioPlayer').addEventListener('contextmenu', function(e) {
-            e.preventDefault();  // Prevents the context menu from appearing
+        // Wait until the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            var audioPlayer = document.getElementById('audioPlayer');
+
+            // Check if audioPlayer exists before binding the event
+            if (audioPlayer) {
+                audioPlayer.addEventListener('contextmenu', function(e) {
+                    e.preventDefault();  // Prevents the context menu from appearing
+                    console.log('Right-click disabled on the audio player');
+                });
+            } else {
+                console.log('Audio player not found!');
+            }
         });
     </script>
 </body>
