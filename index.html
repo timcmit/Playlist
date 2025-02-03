@@ -47,14 +47,14 @@
 <body>
 
 
-    <h2>Tim's Clarinet and Sax buskin'</h2>
-    <h3>Select Tracks to Create a Playlist</h3>
+    <h3>Tim's Clarinet and Sax buskin'</h3>
+    <h2>Select Tracks to Create a Playlist</h2>
 
     <div class="category-container"> <!-- NEW: Flex container for categories -->
 
     <!-- Classical Music -->
     <div class="category">
-        <h3>🎻 Classical</h3>
+        <h2>🎻 Classical</h2>
         <div class="tracklist"> <!-- NEW: Grid for checkboxes -->
         <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/3fhttqf97g00ago8dnfhu/Bruch-song-1.m4a?rlkey=51us3x26g0793paiocng0onvk&st=9abe78ji&raw=1"> Bruch song 1</label><br>
         <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/k4w2q6xrnkc0otiv02l1s/Bruch-song-6.m4a?rlkey=92ezo7ufgotixc98xv8ygcvf0&st=6po0fod8&raw=1"> Bruch song 6</label><br>
@@ -67,7 +67,7 @@
 
     <!-- Easy Listening -->
     <div class="category">
-        <h3>🎼 Easy Listening</h3>
+        <h2>🎼 Easy Listening</h2>
         <div class="tracklist">
         <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/0ymh9gx9p50j9v1401ydk/Autumn-leaves.m4a?rlkey=wwjhk1k6kekutxrcq3qz37klh&st=qz2xvfbr&raw=1"> Autumn leaves</label><br>
         <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/hxid5crqay0qx44riy4v4/Bear-necessities.m4a?rlkey=eyd6a46eaelrphpjr5obe4bdv&st=jvl70b9x&raw=1"> Bear necessities</label><br>
@@ -89,7 +89,7 @@
 
     <!-- Rock Music -->
     <div class="category">
-        <h3>🎸 Rock</h3>
+        <h2>🎸 Rock</h2>
         <div class="tracklist">
         <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/5c7vjahpm5mnvl9w8ehtc/Will-you.m4a?rlkey=maupbno99bt96r40jb720qe0y&st=mbke0nkq&raw=1"> Will you</label><br>
         </div>    
@@ -98,7 +98,7 @@
     <button onclick="generatePlaylist()">Generate Playlist</button>
     <button onclick="toggleShuffle()">Shuffle: <span id="shuffleStatus">OFF</span></button> <!-- NEW -->
 
-<h3>🎶 Now Playing:</h3>
+<h2>🎶 Now Playing:</h2>
 <audio id="audioPlayer">
     Your browser does not support the audio element.
 </audio>
@@ -133,7 +133,7 @@
         }
     });
 </script>
-    <h3>📜 Playlist:</h3>
+    <h2>📜 Playlist:</h2>
     <ul id="playlistDisplay"></ul> <!-- NEW -->
         
     <script>
