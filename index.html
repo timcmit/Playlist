@@ -113,9 +113,8 @@
         </div>    
     </div>
 
-    <button onclick="generatePlaylist()">Generate Playlist</button>
-    <button onclick="toggleShuffle()">Shuffle: <span id="shuffleStatus">OFF</span></button> <!-- NEW -->
-    <button onclick="clearPlaylist()">Clear Playlist</button>
+    <button id="playlistButton" onclick="togglePlaylist()">Generate Playlist</button>
+    <button onclick="toggleShuffle()">Shuffle: <span id="shuffleStatus">OFF</span></button>
         
 <h2>🎶 Now Playing:</h2>
     <audio id="audioPlayer">
@@ -229,18 +228,47 @@
                 [array[i], array[j]] = [array[j], array[i]];
             }
         }
-        function clearPlaylist() {
-            playlist = [];
-            originalPlaylist = [];
-            currentIndex = 0;
-            audioPlayer.pause(); // Stop playback
-            audioPlayer.src = ""; // Clear audio source
-            document.getElementById("playlistDisplay").innerHTML = ""; // Remove displayed tracks
-        }
-        // Automatically play the next track when the current one ends
-        audioPlayer.addEventListener("ended", nextTrack);
-    </script>
-    <!-- JavaScript to disable right-click on the audio player -->
 
+    function togglePlaylist() {
+        let playlistButton = document.getElementById("playlistButton");
+
+        if (playlist.length > 0) {
+            clearPlaylist(); // If playlist exists, clear it
+            playlistButton.textContent = "Generate Playlist"; // Change button text back
+        } else {
+            generatePlaylist(); // Otherwise, generate a new one
+            playlistButton.textContent = "Clear Playlist"; // Change button text
+        }
+    }
+
+    function clearPlaylist() {
+        playlist = [];
+        originalPlaylist = [];
+        currentIndex = 0;
+        document.getElementById("playlistDisplay").innerHTML = "";  // Clear the playlist display
+        audioPlayer.src = "";  // Stop playing the current track
+    }
+
+    // Automatically play the next track when the current one ends
+    audioPlayer.addEventListener("ended", nextTrack);
+</script>
+
+<!-- JavaScript to disable right-click on the audio player -->
+<script>
+    // Wait until the DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        var audioPlayer = document.getElementById('audioPlayer');
+
+        // Check if audioPlayer exists before binding the event
+        if (audioPlayer) {
+            audioPlayer.addEventListener('contextmenu', function(e) {
+                e.preventDefault();  // Prevents the context menu from appearing
+                console.log('Right-click disabled on the audio player');
+            });
+        } else {
+            console.log('Audio player not found!');
+        }
+    });
+</script>
 </body>
 </html>
