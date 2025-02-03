@@ -10,15 +10,19 @@
         
         /* 🛠️ Fixes checkbox alignment + removes blank lines */
         .tracklist {
-            column-count: 2; /* Splits into two equal columns */
-            column-gap: 20px; /* Adds spacing between columns */
-        }
+.tracklist {
+    column-count: 2; /* Creates two columns */
+    column-gap: 20px; /* Space between columns */
+    display: flex;
+    flex-wrap: wrap; /* Prevents unwanted gaps */
+}
 
-        .tracklist label {
-            display: block; /* Ensures checkboxes stay aligned */
-            margin-bottom: 5px; /* Keeps spacing uniform */
-        }
-
+.tracklist label {
+    flex: 1 1 50%; /* Ensures two even columns */
+    min-width: 200px; /* Keeps checkboxes readable */
+    white-space: nowrap; /* Prevents wrapping inside labels */
+    margin: 2px 0; /* Small margin to avoid gaps */
+}
         audio { width: 100%; margin-top: 10px; }
         button { margin-top: 10px; padding: 10px; cursor: pointer; }
         ul { list-style: none; padding: 0; }
