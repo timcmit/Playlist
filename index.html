@@ -92,13 +92,41 @@
     <button onclick="generatePlaylist()">Generate Playlist</button>
     <button onclick="toggleShuffle()">Shuffle: <span id="shuffleStatus">OFF</span></button> <!-- NEW -->
 
-    <h3>🎶 Now Playing:</h3>
-    <audio id="audioPlayer" controls>
-        Your browser does not support the audio element.
-    </audio>
-    <br>
-    <button onclick="nextTrack()">Next</button>
+<h3>🎶 Now Playing:</h3>
+<audio id="audioPlayer">
+    Your browser does not support the audio element.
+</audio>
+<br>
+<button id="playButton">Play</button>
+<button id="pauseButton">Pause</button>
+<button onclick="nextTrack()">Next</button>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var audioPlayer = document.getElementById('audioPlayer');
+        var playButton = document.getElementById('playButton');
+        var pauseButton = document.getElementById('pauseButton');
+
+        if (audioPlayer) {
+            // Disable right-click
+            audioPlayer.addEventListener('contextmenu', function (e) {
+                e.preventDefault();
+                console.log('Right-click disabled on the audio player');
+            });
+
+            // Custom play/pause buttons
+            playButton.addEventListener('click', function () {
+                audioPlayer.play();
+            });
+
+            pauseButton.addEventListener('click', function () {
+                audioPlayer.pause();
+            });
+        } else {
+            console.log('Audio player not found!');
+        }
+    });
+</script>
     <h3>📜 Playlist:</h3>
     <ul id="playlistDisplay"></ul> <!-- NEW -->
         
