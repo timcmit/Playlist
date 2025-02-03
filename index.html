@@ -162,21 +162,26 @@
         let audioPlayer = document.getElementById("audioPlayer");
         function generatePlaylist() {
             playlist = [];
-            originalPlaylist = []; /* NEW */
+            originalPlaylist = [];
             currentIndex = 0;
+    
             document.querySelectorAll('input[type="checkbox"]:checked').forEach((checkbox) => {
-                let track = { url: checkbox.value, name: checkbox.parentElement.innerText.trim() }; /* MODIFIED */
+                let track = { url: checkbox.value, name: checkbox.parentElement.innerText.trim() };
                 playlist.push(track);
-                originalPlaylist.push(track); /* NEW */
+                originalPlaylist.push(track);
             });
 
-            if (playlist.length > 0) {
-                updatePlaylistDisplay(); /* NEW */
-                playTrack(currentIndex);
-            } else {
-                alert("Please select at least one track.");
-            }
-        }
+    if (playlist.length > 0) {
+        updatePlaylistDisplay();
+        playTrack(currentIndex);
+
+        // Scroll down to the playlist and audio controls
+        document.getElementById("playlistDisplay").scrollIntoView({ behavior: "smooth" });
+
+    } else {
+        alert("Please select at least one track.");
+    }
+}
 
         function updatePlaylistDisplay() { /* NEW: Updates tracklist UI */
             let playlistDisplay = document.getElementById("playlistDisplay");
