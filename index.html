@@ -3,15 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dropbox Music Player</title>
+    <title>Enhanced Dropbox Music Player</title>
     <style>
-        body { font-family: Arial, sans-serif; }
-        .category { margin-bottom: 20px; }
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .category-container { display: flex; gap: 20px; flex-wrap: wrap; } /* NEW */
+        .category { flex: 1; min-width: 250px; } /* NEW */
+        .tracklist { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; } /* NEW: Two columns */
         audio { width: 100%; margin-top: 10px; }
-        button { margin-top: 10px; }
+        button { margin-top: 10px; padding: 10px; cursor: pointer; }
+        ul { list-style: none; padding: 0; }
+        li { margin: 5px 0; }
+        .playing { font-weight: bold; color: green; } /* NEW: Highlight current song */
     </style>
 </head>
 <body>
+
 
     <h2>Tim's Clarinet and Sax buskin'</h2>
     <h3>Select Tracks to Create a Playlist</h3>
@@ -79,7 +85,7 @@
             playlist = [];
             originalPlaylist = []; /* NEW */
             currentIndex = 0;
-            document.querySelectorAll('input[name="file"]:checked').forEach((checkbox) => {
+            document.querySelectorAll('input[type="checkbox"]:checked').forEach((checkbox) => {
                 let track = { url: checkbox.value, name: checkbox.parentElement.innerText.trim() }; /* MODIFIED */
                 playlist.push(track);
                 originalPlaylist.push(track); /* NEW */
