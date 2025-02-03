@@ -55,7 +55,8 @@
         <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/5c7vjahpm5mnvl9w8ehtc/Will-you.m4a?rlkey=maupbno99bt96r40jb720qe0y&st=mbke0nkq&raw=1"> Will you</label><br>
     </div>
 
-    <button type="button" onclick="generatePlaylist()">Generate Playlist</button>
+    <button onclick="generatePlaylist()">Generate Playlist</button>
+    <button onclick="toggleShuffle()">Shuffle: <span id="shuffleStatus">OFF</span></button> <!-- NEW -->
 
     <h3>🎶 Now Playing:</h3>
     <audio id="audioPlayer" controls>
@@ -64,35 +65,78 @@
     <br>
     <button onclick="nextTrack()">Next</button>
 
+    <h3>📜 Playlist:</h3>
+    <ul id="playlistDisplay"></ul> <!-- NEW -->
+
     <script>
         let playlist = [];
+        let originalPlaylist = []; /* NEW: Stores original order */
         let currentIndex = 0;
+        let shuffleMode = false; /* NEW: Tracks shuffle state */
         let audioPlayer = document.getElementById("audioPlayer");
 
         function generatePlaylist() {
             playlist = [];
+            originalPlaylist = []; /* NEW */
             currentIndex = 0;
             document.querySelectorAll('input[name="file"]:checked').forEach((checkbox) => {
-                playlist.push(checkbox.value);
+                let track = { url: checkbox.value, name: checkbox.parentElement.innerText.trim() }; /* MODIFIED */
+                playlist.push(track);
+                originalPlaylist.push(track); /* NEW */
             });
 
             if (playlist.length > 0) {
+                updatePlaylistDisplay(); /* NEW */
                 playTrack(currentIndex);
             } else {
                 alert("Please select at least one track.");
             }
         }
 
+        function updatePlaylistDisplay() { /* NEW: Updates tracklist UI */
+            let playlistDisplay = document.getElementById("playlistDisplay");
+            playlistDisplay.innerHTML = "";
+            playlist.forEach((track, index) => {
+                let listItem = document.createElement("li");
+                listItem.textContent = track.name;
+                if (index === currentIndex) {
+                    listItem.classList.add("playing");
+                }
+                playlistDisplay.appendChild(listItem);
+            });
+        }
+
         function playTrack(index) {
             if (playlist.length === 0) return;
-            audioPlayer.src = playlist[index];
+            currentIndex = index;
+            audioPlayer.src = playlist[index].url;
             audioPlayer.play().catch(error => console.error("Autoplay blocked:", error));
+            updatePlaylistDisplay(); /* NEW */
         }
 
         function nextTrack() {
             if (playlist.length === 0) return;
             currentIndex = (currentIndex + 1) % playlist.length;
             playTrack(currentIndex);
+        }
+
+        function toggleShuffle() { /* NEW: Shuffle Mode */
+            shuffleMode = !shuffleMode;
+            document.getElementById("shuffleStatus").textContent = shuffleMode ? "ON" : "OFF";
+
+            if (shuffleMode) {
+                shuffleArray(playlist);
+            } else {
+                playlist = [...originalPlaylist]; /* Restore original order */
+            }
+            updatePlaylistDisplay();
+        }
+
+        function shuffleArray(array) { /* NEW: Randomize playlist */
+            for (let i = array.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
         }
 
         // Automatically play the next track when the current one ends
