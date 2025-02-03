@@ -7,22 +7,28 @@
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; }
         .category { margin-bottom: 20px; }
-        
-        /* 🛠️ Fixes checkbox alignment + removes blank lines */
-        .tracklist {
-.tracklist {
-    column-count: 2; /* Creates two columns */
-    column-gap: 20px; /* Space between columns */
-    display: flex;
-    flex-wrap: wrap; /* Prevents unwanted gaps */
-}
 
-.tracklist label {
-    flex: 1 1 50%; /* Ensures two even columns */
-    min-width: 200px; /* Keeps checkboxes readable */
-    white-space: nowrap; /* Prevents wrapping inside labels */
-    margin: 2px 0; /* Small margin to avoid gaps */
-}
+        /* 🛠️ Auto-adjusting track list layout with no gaps */
+        .tracklist {
+            display: flex;
+            flex-wrap: wrap; /* Allows multiple columns */
+            gap: 5px 20px; /* Controls row & column spacing */
+        }
+
+        .tracklist label {
+            flex: 1 1 calc(33.333% - 20px); /* Adjust for up to 3 columns */
+            min-width: 200px; /* Prevents tiny checkboxes */
+            white-space: nowrap; /* Ensures text stays in one line */
+        }
+
+        @media (max-width: 768px) {
+            .tracklist label { flex: 1 1 calc(50% - 20px); } /* Switch to 2 columns */
+        }
+
+        @media (max-width: 480px) {
+            .tracklist label { flex: 1 1 100%; } /* Switch to 1 column */
+        }
+
         audio { width: 100%; margin-top: 10px; }
         button { margin-top: 10px; padding: 10px; cursor: pointer; }
         ul { list-style: none; padding: 0; }
