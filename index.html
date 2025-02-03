@@ -5,29 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enhanced Dropbox Music Player</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 10px; }
-        .category { margin-bottom: 10px; }
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .category { margin-bottom: 20px; }
 
         /* 🛠️ Auto-adjusting track list layout with no gaps */
         .tracklist {
             display: flex;
             flex-wrap: wrap; /* Allows multiple columns */
-            gap: 1px 0px; /* Controls row & column spacing */
-            align-items: flex-start;  /* Ensures last row aligns to the top, no extra gap */
+            gap: 5px 10px; /* Controls row & column spacing */
+            justify-content: flex-start;  /* Aligns tracks in the left part */
         }
 
         .tracklist label {
             flex: 1 1 calc(33.333% - 10px); /* Adjust for up to 3 columns */
             min-width: 200px; /* Prevents tiny checkboxes */
             white-space: nowrap; /* Ensures text stays in one line */
+            margin: 0; /* Removes margin that could cause gaps */
         }
 
         @media (max-width: 768px) {
-            .tracklist label { flex: 1 1 calc(50% - 10px); } /* Switch to 2 columns */
+            .tracklist label { flex: 1 1 calc(50% - 10px); } /* Switch to 2 columns on medium screens */
         }
 
         @media (max-width: 480px) {
-            .tracklist label { flex: 1 1 100%; } /* Switch to 1 column */
+            .tracklist label { flex: 1 1 100%; } /* Switch to 1 column on smaller screens */
         }
 
         audio { width: 100%; margin-top: 10px; }
