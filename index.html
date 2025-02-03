@@ -93,7 +93,7 @@
     <button onclick="toggleShuffle()">Shuffle: <span id="shuffleStatus">OFF</span></button> <!-- NEW -->
 
     <h3>🎶 Now Playing:</h3>
-    <audio id="audioPlayer" controls>
+    <audio id="audioPlayer" controls oncontextmenu="return false;">
         Your browser does not support the audio element.
     </audio>
     <br>
@@ -107,7 +107,8 @@
         let originalPlaylist = []; /* NEW: Stores original order */
         let currentIndex = 0;
         let shuffleMode = false; /* NEW: Tracks shuffle state */
-        let audioPlayer = document.getElementById("audioPlayer");
+        let audioPlayer = document.getElementById("audioPlayer").addEventListener('contextmenu', function(e) {
+            e.preventDefault();
 
         function generatePlaylist() {
             playlist = [];
