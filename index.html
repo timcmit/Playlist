@@ -115,7 +115,8 @@
 
     <button onclick="generatePlaylist()">Generate Playlist</button>
     <button onclick="toggleShuffle()">Shuffle: <span id="shuffleStatus">OFF</span></button> <!-- NEW -->
-
+    <button onclick="clearPlaylist()">Clear Playlist</button>
+        
 <h2>🎶 Now Playing:</h2>
     <audio id="audioPlayer">
         Your browser does not support the audio element.
@@ -228,7 +229,14 @@
                 [array[i], array[j]] = [array[j], array[i]];
             }
         }
-
+        function clearPlaylist() {
+            playlist = [];
+            originalPlaylist = [];
+            currentIndex = 0;
+            audioPlayer.pause(); // Stop playback
+            audioPlayer.src = ""; // Clear audio source
+            document.getElementById("playlistDisplay").innerHTML = ""; // Remove displayed tracks
+        }
         // Automatically play the next track when the current one ends
         audioPlayer.addEventListener("ended", nextTrack);
     </script>
