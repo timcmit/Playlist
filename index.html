@@ -101,14 +101,18 @@
 
     <h3>📜 Playlist:</h3>
     <ul id="playlistDisplay"></ul> <!-- NEW -->
-
+    <script>
+        // JavaScript to disable right-click on the audio player
+        document.getElementById('audioPlayer').addEventListener('contextmenu', function(e) {
+            e.preventDefault();  // Prevents the context menu from appearing
+        });
+    </script>
     <script>
         let playlist = [];
         let originalPlaylist = []; /* NEW: Stores original order */
         let currentIndex = 0;
         let shuffleMode = false; /* NEW: Tracks shuffle state */
-        let audioPlayer = document.getElementById("audioPlayer").addEventListener('contextmenu', function(e) {
-            e.preventDefault();
+        let audioPlayer = document.getElementById("audioPlayer");
 
         function generatePlaylist() {
             playlist = [];
