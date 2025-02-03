@@ -6,17 +6,19 @@
     <title>Enhanced Dropbox Music Player</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; }
-        .category { margin-bottom: 20px; } /* Ensures categories stay stacked */
-        .tracklist { 
-            display: flex; /* Switch from grid to flexbox */
-            flex-wrap: wrap; /* Allows wrapping without blank lines */
-            gap: 10px; 
-            align-items: center; /* Aligns checkboxes properly */
+        .category { margin-bottom: 20px; }
+        
+        /* 🛠️ Fixes checkbox alignment + removes blank lines */
+        .tracklist {
+            column-count: 2; /* Splits into two equal columns */
+            column-gap: 20px; /* Adds spacing between columns */
         }
+
         .tracklist label {
-            width: calc(50% - 10px); /* Each label takes half the width */
-            min-width: 200px; /* Prevents tiny checkboxes on small screens */
+            display: block; /* Ensures checkboxes stay aligned */
+            margin-bottom: 5px; /* Keeps spacing uniform */
         }
+
         audio { width: 100%; margin-top: 10px; }
         button { margin-top: 10px; padding: 10px; cursor: pointer; }
         ul { list-style: none; padding: 0; }
