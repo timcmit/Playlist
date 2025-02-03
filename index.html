@@ -108,12 +108,6 @@
         let currentIndex = 0;
         let shuffleMode = false; /* NEW: Tracks shuffle state */
         let audioPlayer = document.getElementById("audioPlayer");
-    <script>
-        // JavaScript to disable right-click on the audio player
-        document.getElementById('audioPlayer').addEventListener('contextmenu', function(e) {
-            e.preventDefault();  // Prevents the context menu from appearing
-        });
-    </script>
         function generatePlaylist() {
             playlist = [];
             originalPlaylist = []; /* NEW */
@@ -181,6 +175,11 @@
         // Automatically play the next track when the current one ends
         audioPlayer.addEventListener("ended", nextTrack);
     </script>
-
+    <!-- JavaScript to disable right-click on the audio player -->
+    <script>
+        document.getElementById('audioPlayer').addEventListener('contextmenu', function(e) {
+            e.preventDefault();  // Prevents the context menu from appearing
+        });
+    </script>
 </body>
 </html>
