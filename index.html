@@ -38,7 +38,19 @@
         }
 
         audio { width: 100%; margin-top: 10px; }
-        button { margin-top: 10px; padding: 10px; cursor: pointer; }
+        button {
+           font-size: 16px; /* Increase text size */
+           padding: 12px 20px; /* Increase button size */
+           border-radius: 8px; /* Optional: Make edges rounded */
+           border: none; /* Optional: Remove default border */
+           background-color: #007BFF; /* Optional: Add a nice color */
+           color: white; /* Optional: Change text color */
+           cursor: pointer; /* Keep clickable */
+        }
+
+        button:hover {
+           background-color: #0056b3; /* Darker blue on hover */
+        }
         ul { list-style: none; padding: 0; }
         li { margin: 5px 0; }
         .playing { font-weight: bold; color: green; } /* Highlights current song */
