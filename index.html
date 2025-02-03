@@ -19,10 +19,16 @@
         .tracklist label {
             flex: 1 1 calc(33.333% - 10px); /* Ensures consistent width */
             min-width: 100px; /* Keeps all checkboxes the same */
-            max-width: 33.333%; /* Ensures last checkbox doesn't stretch */
-            text-align: left; /* Aligns text properly */
+            white-space: nowrap; /* Ensures text stays in one line */
+            margin: 0; /* Removes margin that could cause gaps */
         }
-
+        
+        .tracklist::after {
+            content: ""; /* Empty placeholder */
+            flex: 1 1 calc(33.333% - 10px); /* Takes up space like a real checkbox */
+            visibility: hidden; /* Won't be seen */
+        }
+        
         @media (max-width: 768px) {
             .tracklist label { flex: 1 1 calc(50% - 10px); } /* Switch to 2 columns on medium screens */
         }
