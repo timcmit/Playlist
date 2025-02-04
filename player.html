@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Audio Player</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .tracklist label { display: block; margin: 5px 0; }
+        audio { width: 100%; margin-top: 10px; }
+        button { font-size: 16px; padding: 10px 15px; cursor: pointer; margin: 5px; }
+        #playlistDisplay { font-size: 16px; }
+        .playing { font-weight: bold; color: green; }
+
+        /* 🛠️ Auto-adjusting track list layout with no gaps */
+        .tracklist {
+            display: flex;
+            flex-wrap: wrap; /* Allows multiple columns */
+            gap: 0px 0px; /* Controls row & column spacing */
+            justify-content: flex-start;  /* Aligns tracks in the left part */
+        }
+
+        .tracklist label {
+            flex: 1 1 calc(33.333% - 10px); /* Ensures consistent width */
+            min-width: 100px; /* Keeps all checkboxes the same */
+            white-space: nowrap; /* Ensures text stays in one line */
+            margin: 0; /* Removes margin that could cause gaps */
+        }
+        
+        .tracklist::after {
+            content: ""; /* Empty placeholder */
+            flex: 1 1 calc(33.333% - 10px); /* Takes up space like a real checkbox */
+            visibility: hidden; /* Won't be seen */
+        }
+        
+        @media (max-width: 768px) {
+            .tracklist label { flex: 1 1 calc(50% - 10px); } /* Switch to 2 columns on medium screens */
+        }
+
+        @media (max-width: 480px) {
+            .tracklist label { flex: 1 1 100%; } /* Switch to 1 column on smaller screens */
+        }
+
+        audio { width: 100%; margin-top: 10px; }
+        button {
+           font-size: 16px; /* Increase text size */
+           padding: 12px 20px; /* Increase button size */
+           border-radius: 8px; /* Optional: Make edges rounded */
+           border: none; /* Optional: Remove default border */
+           background-color: #007BFF; /* Optional: Add a nice color */
+           color: white; /* Optional: Change text color */
+           cursor: pointer; /* Keep clickable */
+        }
+
+        button:hover {
+           background-color: #0056b3; /* Darker blue on hover */
+        }
+        ul { list-style: none; padding: 0; }
+        li { margin: 5px 0; }
+        .playing { font-weight: bold; color: green; } /* Highlights current song */
+
+        #playlistDisplay {
+            font-size: 16px; /* Set a fixed size */
+            max-width: 600px; /* Optional: Limit width */
+            line-height: 1.5; /* Improve readability */
+        }
+
+    </style>
+</head>
+<body>
+    <h2>Tim's Clarinet and Sax buskin'</h2>
+    <h2>Select tracks for playlist</h2>
+
+    <div class="category-container"> <!-- NEW: Flex container for categories -->
+
+    <!-- Classical Music -->
+    <div class="category">
+        <h2>🎻 Classical</h2>
+        <div class="tracklist"> <!-- NEW: Grid for checkboxes -->
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/3fhttqf97g00ago8dnfhu/Bruch-song-1.m4a?rlkey=51us3x26g0793paiocng0onvk&st=9abe78ji&raw=1"> Bruch song 1</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/k4w2q6xrnkc0otiv02l1s/Bruch-song-6.m4a?rlkey=92ezo7ufgotixc98xv8ygcvf0&st=6po0fod8&raw=1"> Bruch song 6</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/sa1giqmblgfjjq4fvi032/Gabriels-oboe.m4a?rlkey=2obqy1ztxcyad3sicjzby3bxy&st=av967bwc&raw=1"> Gabriel's oboe</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/iiuxz4ekr48dzubt86bsb/Mozart-clarinet-concerto.m4a?rlkey=i6ersqbv1cj92zpfhkon7abjz&st=3szs2r4v&raw=1"> Mozart clarinet concerto</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/j48i9s9g02ltu4n4mhj1f/Webber-variation-9.m4a?rlkey=i2f2l467ni3ru4s7tg8gvyxrx&st=v5osaucw&raw=1"> Lloyd Webber Variation 9</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/npnsnzelidspe681ux65i/Gliss.m4a?rlkey=b3xnawmrqet374t2zxeu64556&st=oqohtajg&raw=1"> Rhapsody in blue gliss</label><br>
+        </div>    
+    </div>
+
+    <!-- Easy Listening -->
+    <div class="category">
+        <h2>🎼 Easy Listening</h2>
+        <div class="tracklist">
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/0ymh9gx9p50j9v1401ydk/Autumn-leaves.m4a?rlkey=wwjhk1k6kekutxrcq3qz37klh&st=qz2xvfbr&raw=1"> Autumn leaves</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/hxid5crqay0qx44riy4v4/Bear-necessities.m4a?rlkey=eyd6a46eaelrphpjr5obe4bdv&st=jvl70b9x&raw=1"> Bear necessities</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/veyc90w31m6j2bp3mbzt8/Come-away-with-me.m4a?rlkey=iycc2kfcraotbf9lqzc15ijuf&st=w8bquszh&raw=1"> Come away with me</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/v82txfx3gh0n1lcyev5ga/Father-and-son.m4a?rlkey=xr0gb584nagfaiv4qsqzq38mb&st=quxgzsu0&raw=1"> Father and son</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/16ib86sbflypw3ph0h7he/Georgia.m4a?rlkey=w9dmxntzofbj8vewtdj8z0zen&st=kiq25ca4&raw=1"> Georgia</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/s2qzg6sl7gbda7xzfzqnu/Ma-mere.m4a?rlkey=6j7a79qsu7v5awh036rkmsi1z&st=f58w07c3&raw=1"> Ma mere</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/blt6xv6kbwvf47zmgur2v/My-baby-dont-care.m4a?rlkey=x5qa7znz8gt78z39y5w5p6dfh&st=d1pkfx9d&raw=1"> My baby don't care</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/kxevps4kvccho7cfk278n/Never-love-again.m4a?rlkey=kp4v0jo9ug01agfd8yabbkayq&st=vs3sjvfk&raw=1"> Never love again</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/azkszsg0ma2jgpnofa7dn/She-used-to-be-mine.m4a?rlkey=1xf4g5kdxov26gwi70x0j3qsr&st=tazu1x01&raw=1"> She used to be mine</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/rez0wa67quomn7pdf59rz/Stranger-on-the-shore.m4a?rlkey=bns5bx36fbfi178z19bduf6wd&st=yet4hhwk&raw=1"> Stranger on the shore</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/tl9izz2q3bghbzzhuazrc/Summertime.m4a?rlkey=ye7w2kofoknlz8noiilvy7a04&st=bb3okqan&raw=1"> Summertime</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/k32a92klihajuf0ze3q8r/Thousand-years.m4a?rlkey=iourg37tg9meqs8b66u3639qn&st=emfan3h5&raw=1"> Thousand years</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/3ujn2b5jlp643ol9aouml/Vienna.m4a?rlkey=wh772h69pt2p6obm548fm533y&st=wrzayxuk&raw=1"> Vienna</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/5e4dlv9fmnzrc12obwvax/Wonderful-world.m4a?rlkey=uvksxepos1vu6kuici0bq3g8q&st=kv7yg4mx&raw=1"> Wonderful world</label><br>
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/0hbzdng0edhqopgvjd5xf/You-are-the-reason.m4a?rlkey=ie3t121b7q6kzb4weachnnuh1&st=qp6vr2ex&raw=1"> You are the reason</label><br>
+        </div>    
+    </div>
+
+    <!-- Rock Music -->
+    <div class="category">
+        <h2>🎸 Rock</h2>
+        <div class="tracklist">
+        <label><input type="checkbox" name="file" value="https://www.dropbox.com/scl/fi/iijuqf96epop0q1yx7oul/Will-you-2.m4a?rlkey=m95lfe7w03yq953ng6eyb7vb8&st=1sur31wf&raw=1"> Will you</label><br>
+        </div>    
+    </div>
+    
+    <button onclick="togglePlaylist()">Generate/Clear Playlist</button>
+    <button onclick="toggleShuffle()">Shuffle: <span id="shuffleStatus">OFF</span></button>
+    
+    <h3>Now Playing:</h3>
+    <audio id="audioPlayer" controls>
+        Your browser does not support the audio element.
+    </audio>
+    <button onclick="nextTrack()">Next</button>
+    
+    <h3>Playlist:</h3>
+    <ul id="playlistDisplay"></ul>
+    
+    <script>
+        let playlist = [], originalPlaylist = [], currentIndex = 0, shuffleMode = false;
+        let audioPlayer = document.getElementById("audioPlayer");
+        
+        function togglePlaylist() {
+            if (playlist.length > 0) {
+                clearPlaylist();
+            } else {
+                generatePlaylist();
+            }
+        }
+        
+        function generatePlaylist() {
+            playlist = [];
+            originalPlaylist = [];
+            currentIndex = 0;
+            document.querySelectorAll('input[type="checkbox"]:checked').forEach((checkbox) => {
+                let track = { url: checkbox.value, name: checkbox.parentElement.innerText.trim() };
+                playlist.push(track);
+                originalPlaylist.push(track);
+            });
+            if (playlist.length > 0) {
+                updatePlaylistDisplay();
+                playTrack(0);
+                window.scrollTo({ top: document.getElementById("audioPlayer").offsetTop, behavior: "smooth" });
+            } else {
+                alert("Please select at least one track.");
+            }
+        }
+        
+        function clearPlaylist() {
+            playlist = [];
+            originalPlaylist = [];
+            currentIndex = 0;
+            document.getElementById("playlistDisplay").innerHTML = "";
+            audioPlayer.src = "";
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+        }
+        
+        function updatePlaylistDisplay() {
+            let display = document.getElementById("playlistDisplay");
+            display.innerHTML = "";
+            playlist.forEach((track, index) => {
+                let li = document.createElement("li");
+                li.textContent = track.name;
+                li.classList.toggle("playing", index === currentIndex); // Ensures only one track is highlighted
+                display.appendChild(li);
+            });
+        }  
+      
+        function playTrack(index) {
+            if (playlist.length === 0) return;
+            currentIndex = index;
+            audioPlayer.src = playlist[index].url;
+            audioPlayer.play().catch(console.error);
+            updatePlaylistDisplay();
+        }
+        
+        function nextTrack() {
+            if (playlist.length === 0) {
+                audioPlayer.pause();
+                return;
+            }
+            currentIndex = (currentIndex + 1) % playlist.length;
+            playTrack(currentIndex);
+        } 
+       
+        function toggleShuffle() {
+            shuffleMode = !shuffleMode;
+            document.getElementById("shuffleStatus").textContent = shuffleMode ? "ON" : "OFF";
+
+            if (shuffleMode) {
+                playlist = [...originalPlaylist].sort(() => Math.random() - 0.5);
+                currentIndex = 0; // Reset index to start from the first shuffled track
+                playTrack(currentIndex);
+            } else {
+                // Find the currently playing track in the original playlist
+                let currentTrack = playlist[currentIndex];
+                playlist = [...originalPlaylist];
+                let newIndex = playlist.findIndex(track => track.url === currentTrack.url);
+                currentIndex = newIndex !== -1 ? newIndex : 0; // Ensure a valid index
+                playTrack(currentIndex);
+            }
+            updatePlaylistDisplay();
+        }       
+        audioPlayer.addEventListener("ended", nextTrack);
+    </script>
+</body>
+</html>
